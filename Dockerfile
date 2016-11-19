@@ -3,7 +3,8 @@ FROM ubuntu:14.04
 ENV PUPPET_SERVER_VERSION="2.4.0" DUMB_INIT_VERSION="1.0.2" UBUNTU_CODENAME="trusty" PUPPETSERVER_JAVA_ARGS="-Xms256m -Xmx256m" PATH=/opt/puppetlabs/server/bin:/opt/puppetlabs/puppet/bin:/opt/puppetlabs/bin:$PATH
 
 RUN apt-get update && \
-    apt-get install -y wget=1.17.1-1ubuntu1 && \
+    apt-get install -y wget && \
+    apt-get install -y lsb-release && \
     wget https://apt.puppetlabs.com/puppetlabs-release-pc1-"$UBUNTU_CODENAME".deb && \
     wget https://github.com/Yelp/dumb-init/releases/download/v"$DUMB_INIT_VERSION"/dumb-init_"$DUMB_INIT_VERSION"_amd64.deb && \
     dpkg -i puppetlabs-release-pc1-"$UBUNTU_CODENAME".deb && \
